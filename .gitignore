@@ -363,4 +363,4 @@ FodyWeavers.xsd
 
 # Libs folder for BepinEx
 [Ll]ibs/
-/Utilla/Directory.Build.props
+/LB/Directory.Build.props

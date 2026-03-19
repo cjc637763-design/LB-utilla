@@ -1,4 +1,4 @@
-# Utilla
+# LB
 
 A PC library for Gorilla Tag that handles various room-related things (and more?)
 
@@ -10,27 +10,27 @@ If you don't want to manually install, you can install this mod with the [Monke 
 
 If your game isn't modded with BepinEx, DO THAT FIRST! Simply go to the [latest BepinEx release](https://github.com/BepInEx/BepInEx/releases) and extract BepinEx_x64_VERSION.zip directly into your game's folder, then run the game once to install BepinEx properly.
 
-Next, go to the [latest release of this mod](https://github.com/legoandmars/Utilla/releases/latest) and extract it directly into your game's folder. Make sure it's extracted directly into your game's folder and not into a subfolder!
+Next, go to the [latest release of this mod](https://github.com/legoandmars/LB/releases/latest) and extract it directly into your game's folder. Make sure it's extracted directly into your game's folder and not into a subfolder!
 
 ## For Developers
-### **Important:** Utilla 1.5.0 Update
-With the release of Utilla 1.5.0, mods are required to only function in modded gamemodes, instead of in any private lobby. Utilla provides easy to use attributes to make this transition as painless as possible. See [this commit](https://github.com/Graicc/SpaceMonke/commit/85074d5947856f5c8d673b141056d26fcc267115) for an example of updating your mod to work with the new system.
+### **Important:** LB 1.5.0 Update
+With the release of LB 1.5.0, mods are required to only function in modded gamemodes, instead of in any private lobby. LB provides easy to use attributes to make this transition as painless as possible. See [this commit](https://github.com/Graicc/SpaceMonke/commit/85074d5947856f5c8d673b141056d26fcc267115) for an example of updating your mod to work with the new system.
 
 ### Enabling your mod
 
-Handling whether the player is in a modded room is a very important part of making sure your mod won't be used to cheat. Utilla makes this easy by providing attributes to trigger when a modded lobby is joined.
+Handling whether the player is in a modded room is a very important part of making sure your mod won't be used to cheat. LB makes this easy by providing attributes to trigger when a modded lobby is joined.
 
 The `[ModdedGamemode]` must be applied to the plugin class of your mod to use the other attributes. `[ModdedGamemodeJoin]` and `[ModdedGamemodeLeave]` can be applied to any void method within this class, with an optional string parameter containing the complete gamemode string. These methods are called when a modded room is joined or left, respectively.
 
 ```cs
 using System;
 using BepInEx;
-using Utilla;
+using LB;
 
 namespace ExamplePlugin
 {
     [BepInPlugin("org.legoandmars.gorillatag.exampleplugin", "Example Plugin", "1.0.0")]
-    [BepInDependency("org.legoandmars.gorillatag.utilla", "1.5.0")] // Make sure to add Utilla 1.5.0 as a dependency!
+    [BepInDependency("org.legoandmars.gorillatag.lb", "1.5.0")] // Make sure to add LB 1.5.0 as a dependency!
     [ModdedGamemode] // Enable callbacks in default modded gamemodes
     public class ExamplePlugin : BaseUnityPlugin
     {
@@ -63,11 +63,11 @@ namespace ExamplePlugin
 
 ### Custom Gamemodes
 
-Utilla 1.5.0 brings support for custom gamemodes to Gorilla Tag. A mod can register custom gamemodes through the `[ModdedGamemode]` attribute, and will appear next to the default gamemodes in game.
+LB 1.5.0 brings support for custom gamemodes to Gorilla Tag. A mod can register custom gamemodes through the `[ModdedGamemode]` attribute, and will appear next to the default gamemodes in game.
 
 ```cs
 [BepInPlugin("org.legoandmars.gorillatag.exampleplugin", "Example Plugin", "1.0.0")]
-[BepInDependency("org.legoandmars.gorillatag.utilla", "1.5.0")] // Make sure to add Utilla 1.5.0 as a dependency!
+[BepInDependency("org.legoandmars.gorillatag.lb", "1.5.0")] // Make sure to add LB 1.5.0 as a dependency!
 [ModdedGamemode("mygamemodeid", "MY GAMEMODE", Models.BaseGamemode.Casual)] // Enable callbacks in a new casual gamemode called "MY GAMEMODE"
 public class ExamplePlugin : BaseUnityPlugin {}
 ```
@@ -76,7 +76,7 @@ Additionally, a completely custom game manager can be used, by creating a class 
 
 ```cs
 [BepInPlugin("org.legoandmars.gorillatag.exampleplugin", "Example Plugin", "1.0.0")]
-[BepInDependency("org.legoandmars.gorillatag.utilla", "1.5.0")] // Make sure to add Utilla 1.5.0 as a dependency!
+[BepInDependency("org.legoandmars.gorillatag.lb", "1.5.0")] // Make sure to add LB 1.5.0 as a dependency!
 [ModdedGamemode("mygamemodeid", "MY GAMEMODE", typeof(MyGameManager))] // Enable callbacks in a new custom gamemode using MyGameManager
 public class ExamplePlugin : BaseUnityPlugin {}
 
@@ -124,23 +124,23 @@ public class MyGameManager : GorillaGameManager
 
 ### Room join events
 
-Utilla provides events to broadcast when any room is joined. They are not recommended to enable and disable your mod, for that use attributes, described above. Utilla provides two events for room joining and leaving, `Utilla.Events.RoomJoined` and `Utilla.Events.RoomLeft` 
+LB provides events to broadcast when any room is joined. They are not recommended to enable and disable your mod, for that use attributes, described above. LB provides two events for room joining and leaving, `LB.Events.RoomJoined` and `LB.Events.RoomLeft` 
 
 ```cs
 using System;
 using BepInEx;
-using Utilla;
+using LB;
 
 namespace ExamplePlugin
 {
     [BepInPlugin("org.legoandmars.gorillatag.exampleplugin", "Example Plugin", "1.0.0")]
-    [BepInDependency("org.legoandmars.gorillatag.utilla", "1.5.0")] // Make sure to add Utilla as a dependency!
+    [BepInDependency("org.legoandmars.gorillatag.lb", "1.5.0")] // Make sure to add LB as a dependency!
     public class ExamplePlugin : BaseUnityPlugin
     {
         void Awake()
         {
-            Utilla.Events.RoomJoined += RoomJoined;
-            Utilla.Events.RoomLeft += RoomLeft;
+            LB.Events.RoomJoined += RoomJoined;
+            LB.Events.RoomLeft += RoomLeft;
         }
 
         private void RoomJoined(object sender, Events.RoomJoinedArgs e)
@@ -158,22 +158,22 @@ namespace ExamplePlugin
 
 ### Initialization event
 
-Utilla provides an event that is triggered after Gorilla Tag initializes, use this if you are getting null reference errors on singleton objects such as `GorillaLocomotion.Player.Instance`
+LB provides an event that is triggered after Gorilla Tag initializes, use this if you are getting null reference errors on singleton objects such as `GorillaLocomotion.Player.Instance`
 
 ```cs
 using System;
 using BepInEx;
-using Utilla;
+using LB;
 
 namespace ExamplePlugin
 {
     [BepInPlugin("org.legoandmars.gorillatag.exampleplugin", "Example Plugin", "1.0.0")]
-    [BepInDependency("org.legoandmars.gorillatag.utilla", "1.5.0")] // Make sure to add Utilla as a dependency!
+    [BepInDependency("org.legoandmars.gorillatag.lb", "1.5.0")] // Make sure to add LB as a dependency!
     public class ExamplePlugin : BaseUnityPlugin
     {
         void Awake()
         {
-            Utilla.Events.GameInitialized += GameInitialized;
+            LB.Events.GameInitialized += GameInitialized;
         }
 
         private void GameInitialized(object sender, EventArgs e)
@@ -186,18 +186,18 @@ namespace ExamplePlugin
 ```
 
 ### Manually joining private lobbies
-If you'd like to join custom private lobbies with your mod, Utilla implements methods for that too.
+If you'd like to join custom private lobbies with your mod, LB implements methods for that too.
 ```cs
-Utilla.Utils.RoomUtils.JoinPrivateLobby() // Joins a private lobby with a random 6 character code
-Utilla.Utils.RoomUtils.JoinPrivateLobby("TestLobby") // Joins a private lobby with the code TestLobby
-Utilla.Utils.RoomUtils.JoinPrivateLobby("TestLobby", true) // Joins a private casual lobby with the code TestLobby
+LB.Utils.RoomUtils.JoinPrivateLobby() // Joins a private lobby with a random 6 character code
+LB.Utils.RoomUtils.JoinPrivateLobby("TestLobby") // Joins a private lobby with the code TestLobby
+LB.Utils.RoomUtils.JoinPrivateLobby("TestLobby", true) // Joins a private casual lobby with the code TestLobby
 ```
 
 ### Using custom queues
-If you'd like to use custom queues with your mod, Utilla implements methods for that as well.
+If you'd like to use custom queues with your mod, LB implements methods for that as well.
 ```cs
-Utilla.Utils.RoomUtils.JoinModdedLobby("TestQueue") // Joins a random room in the queue TestQueue
-Utilla.Utils.RoomUtils.JoinModdedLobby("TestQueue", true) // Joins a random casual room in the queue TestQueue
+LB.Utils.RoomUtils.JoinModdedLobby("TestQueue") // Joins a random room in the queue TestQueue
+LB.Utils.RoomUtils.JoinModdedLobby("TestQueue", true) // Joins a random casual room in the queue TestQueue
 ```
 
 ## Building

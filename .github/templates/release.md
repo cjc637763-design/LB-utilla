@@ -1,5 +1,5 @@
 <!-- DISC-ONLY # {HUMAN_NAME} {VERSION} -->
-Utilla, a Gorilla Tag library.
+LB, a Gorilla Tag library.
 
 Changes:
 - 

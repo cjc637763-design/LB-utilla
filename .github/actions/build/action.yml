@@ -14,7 +14,7 @@ runs:
     with:
       working-dir: ${{ steps.wd.outputs.dir }}
 
-  - uses: Gorilla-Tag-Modding-Group/gorilla-tag-build-tools/actions/deps/legoandmars/Utilla@main
+  - uses: Gorilla-Tag-Modding-Group/gorilla-tag-build-tools/actions/deps/legoandmars/LB@main
     with:
       output-dir: ${{ steps.wd.outputs.dir }}\Libs
 
