@@ -1,0 +1,24 @@
+Why you are not allowed to change the weather/time
+
+You can increase your visibility
+It does not correspond with Gorilla Tag's set time/weather cycle
+You are changing an asset/assets inside the game, which is unauthorized modification of the game
+Why nametags that show special cosmetics are bannable
+
+By seeing someone's cosmetics that they are not wearing/you have not originally seen them wear, you are getting access to their inventory data, which qualifies as "unauthorized data access."
+
+Most studios (alongside Another Axiom) treat that as reverse engineering or data scraping. (Section 8 point m. of Gorilla Tag's ToS gorillatagvr.com/tos)
+
+V Harmless
+Seeing cosmetics someone is wearing in-game
+Seeing your own inventory normally
+
+~ Gray area
+Extracting data through network inspection
+Accessing non-documented API responses
+Viewing hidden cosmetics
+
+X Ban territory
+Querying other players’ inventories directly
+Accessing test-only cosmetics
+Using tools to read backend data not exposed in UI
