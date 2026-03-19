@@ -5,3 +5,20 @@ Why you are not allowed to change the weather/time
 You can increase your visibility
 It does not correspond with Gorilla Tag's set time/weather cycle
 You are changing an asset/assets inside the game, which is unauthorized modification of the game
+
+Why you are not allowed to see other's IDs
+
+If you go to the support tab, it literally says not to share your ID with anyone else.
+In further details, inside PlayFab, every account gets a PlayFabId.
+
+It’s not a password.
+It’s not a secret key.
+It’s an identifier.
+
+It becomes a problem if someone:
+Uses it to try unauthorized API calls
+Spoofs requests
+Automates abuse against other accounts
+Uses it to track players, which violates privacy
+
+All of these violate the ToS of Gorilla Tag which can be found at gorillatagvr.com/tos.
